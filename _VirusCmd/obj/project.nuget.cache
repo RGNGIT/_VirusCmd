@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "cbEk01EmGNlO2hDHFnZv7xCi7lPZGSvq9PXUDZB4iQsow1Ji4vdEJ5brGjeAIOgv1TmwzqVFLKOcbd5H7fJxXA==",
+  "dgSpecHash": "uu0KxOprbXhltJZZN9FoIII9bdhOMxWEtDiiJRZPsdS624PE33Dn419/PfbqArHYhMAv+DXD5zChO+MjWDSQOA==",
   "success": true,
   "projectFilePath": "/Users/a1/Projects/_VirusCmd/_VirusCmd/_VirusCmd.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/a1/.nuget/packages/microsoft.netcore.ildasm/7.0.0/microsoft.netcore.ildasm.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

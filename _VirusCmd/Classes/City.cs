@@ -7,7 +7,7 @@ namespace _VirusCmd.Classes
 		public int TCAmount { get; set; }
 		public float TCAttendPercentage { get; set; }
 
-		public City(int Population, int Infected, int Vaccinated, float Density, int TCAmount, float TCAttendPercentage) : base(Population, Infected, Vaccinated, Density)
+		public City(string Name, int Population, int Infected, int Vaccinated, float Density, int TCAmount, float TCAttendPercentage) : base(Name, Population, Infected, Vaccinated, Density)
 		{
 			this.TCAmount = TCAmount;
 			this.TCAttendPercentage = TCAttendPercentage;

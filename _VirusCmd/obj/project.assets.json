@@ -1,11 +1,33 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "Microsoft.NETCore.ILDAsm/7.0.0": {
+        "type": "package"
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Microsoft.NETCore.ILDAsm/7.0.0": {
+      "sha512": "MKBQMJf0LbOfc9NHS+8w6uhqZGF5ns/2eu5Dq8EAqMRDk2jVUPtXKuF9B+bJHVYYRvtq0WxW8yJsfmi3fNLdHw==",
+      "type": "package",
+      "path": "microsoft.netcore.ildasm/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "microsoft.netcore.ildasm.7.0.0.nupkg.sha512",
+        "microsoft.netcore.ildasm.nuspec",
+        "runtime.json"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "Microsoft.NETCore.ILDAsm >= 7.0.0"
+    ]
   },
   "packageFolders": {
     "/Users/a1/.nuget/packages/": {}
@@ -43,6 +65,12 @@
     "frameworks": {
       "net6.0": {
         "targetAlias": "net6.0",
+        "dependencies": {
+          "Microsoft.NETCore.ILDAsm": {
+            "target": "Package",
+            "version": "[7.0.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

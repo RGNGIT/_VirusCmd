@@ -4,12 +4,13 @@ namespace _VirusCmd.Classes
 	// Общий класс для населенного пункта
 	public class Locality
 	{
+		public string Name { get; set; }
 		public int Population { get; set; }
 		public int Infected { get; set; }
 		public int Vaccinated { get; set; }
 		public float Density { get; set; }
 
-		public Locality(int Population, int Infected, int Vaccinated, float Density)
+		public Locality(string Name, int Population, int Infected, int Vaccinated, float Density)
 		{
 			if((Infected + Vaccinated) > Population)
             {
@@ -19,6 +20,7 @@ namespace _VirusCmd.Classes
                 );
             } else
             {
+				this.Name = Name;
 				this.Population = Population;
 				this.Infected = Infected;
 				this.Vaccinated = Vaccinated;

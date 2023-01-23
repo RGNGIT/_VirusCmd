@@ -6,7 +6,7 @@ namespace _VirusCmd.Classes
 
 		public int CitiesMerged { get; set; } 
 
-		public Megapolis(int Population, int Infected, int Vaccinated, float Density, int CitiesMerged) : base(Population, Infected, Vaccinated, Density)
+		public Megapolis(string Name, int Population, int Infected, int Vaccinated, float Density, int CitiesMerged) : base(Name, Population, Infected, Vaccinated, Density)
 		{
 			this.CitiesMerged = CitiesMerged;
 		}

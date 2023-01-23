@@ -1,14 +1,20 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{E38EA5F7-E991-4441-84D5-B226E1625E65}|Default">
+  <MonoDevelop.Ide.ItemProperties.__VirusCmd PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workbench ActiveDocument="_VirusCmd/Program.cs">
     <Files>
       <File FileName="_VirusCmd/Program.cs" Line="93" Column="21" />
       <File FileName="_VirusCmd/Classes/Locality.cs" />
-      <File FileName="_VirusCmd/Classes/Megapolis.cs" Line="6" Column="130" />
-      <File FileName="_VirusCmd/Classes/City.cs" Line="6" Column="14" />
-      <File FileName="_VirusCmd/Classes/Town.cs" Line="6" Column="125" />
-      <File FileName="_VirusCmd/Classes/SeasonSingleton.cs" Line="9" Column="56" />
-      <File FileName="_VirusCmd/Classes/Country.cs" Line="6" Column="1" />
+      <File FileName="_VirusCmd/Classes/Megapolis.cs" />
+      <File FileName="_VirusCmd/Classes/City.cs" />
+      <File FileName="_VirusCmd/Classes/Town.cs" />
+      <File FileName="_VirusCmd/Classes/SeasonSingleton.cs" />
+      <File FileName="_VirusCmd/Classes/Country.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,10 +29,4 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.__VirusCmd PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>

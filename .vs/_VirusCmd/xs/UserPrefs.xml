@@ -1,4 +1,4 @@
-﻿<Properties StartupConfiguration="{E38EA5F7-E991-4441-84D5-B226E1625E65}|Default">
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{E38EA5F7-E991-4441-84D5-B226E1625E65}|Default">
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workbench ActiveDocument="_VirusCmd/Program.cs">
     <Files>

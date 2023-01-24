@@ -256,7 +256,7 @@ public static class Program
         }
     }
 
-    static void ReportGen()
+    static void Actions()
     {
         Console.Clear();
         
@@ -264,39 +264,31 @@ public static class Program
 
     static void ShowAll()
     {
-        string DefineType(string className) 
-        {
-            switch(className) 
-            {
-                case "Megapolis": return "Мегаполис";
-                case "City": return "Город";
-                case "Town": return "Поселок";
-                default: return "Не найдено определения класса";
-            }
-        }
         Console.Clear();
+        var a = ConsoleMarkupTools.SpaceGen(3); 
+        var b = ConsoleMarkupTools.SpaceGen(6);
         foreach(Country country in Storage) 
         {
             Console.WriteLine($"Страна: {country.Name}\nБюджет: {country.Budget}\nНаселенные пункты:");
             foreach(Locality locality in country.Localities) 
             {
-                Console.WriteLine($"   {locality.Name} // {DefineType(locality.GetType().Name)}");
-                Console.WriteLine($"      Население: {locality.Population}");
-                Console.WriteLine($"      Заболевшие: {locality.Infected}");
-                Console.WriteLine($"      Вакцинированные: {locality.Vaccinated}");
-                Console.WriteLine($"      Плотность трафика: {locality.Density}");
+                Console.WriteLine($"{a}{locality.Name} // {ConsoleMarkupTools.DefineType(locality.GetType().Name)}");
+                Console.WriteLine($"{b}Население: {locality.Population}");
+                Console.WriteLine($"{b}Заболевшие: {locality.Infected}");
+                Console.WriteLine($"{b}Вакцинированные: {locality.Vaccinated}");
+                Console.WriteLine($"{b}Плотность трафика: {locality.Density}");
                 switch(locality.GetType().Name) 
                 {
                     case "Megapolis":
-                    Console.WriteLine($"      Городов в мегаполисе: {((Megapolis)locality).CitiesMerged}");
+                    Console.WriteLine($"{b}Городов в мегаполисе: {((Megapolis)locality).CitiesMerged}");
                     break;
                     case "City":
-                    Console.WriteLine($"      Количество ТЦ: {((City)locality).TCAmount}");
-                    Console.WriteLine($"      Процент посещения ТЦ: {((City)locality).TCAttendPercentage}");
+                    Console.WriteLine($"{b}Количество ТЦ: {((City)locality).TCAmount}");
+                    Console.WriteLine($"{b}Процент посещения ТЦ: {((City)locality).TCAttendPercentage}");
                     break;
                     case "Town":
-                    Console.WriteLine($"      ФИО старейшины поселка: {((Town)locality).Elder}");
-                    Console.WriteLine($"      Количество хозяйств: {((Town)locality).HouseholdAmount}");
+                    Console.WriteLine($"{b}ФИО старейшины поселка: {((Town)locality).Elder}");
+                    Console.WriteLine($"{b}Количество хозяйств: {((Town)locality).HouseholdAmount}");
                     break;
                 }
             }
@@ -315,7 +307,7 @@ public static class Program
         {
             Console.WriteLine("Год и сезон не назначены");
         }
-        Console.WriteLine("Главное меню\n1 - Назначить сезон и год\n2 - Внести новый НП\n3 - Добавить страну\n4 - Удаление\n5 - Формирование отчета\n6 - Вывести все данные");
+        Console.WriteLine("Главное меню\n1 - Назначить сезон и год\n2 - Внести новый НП\n3 - Добавить страну\n4 - Удаление\n5 - Действия\n6 - Вывести все данные");
         var Selector = Console.ReadLine();
         switch(Convert.ToInt32(Selector))
         {
@@ -323,7 +315,7 @@ public static class Program
             case 2: LocalityMenuOption(); break;
             case 3: CountryMenuOption(); break;
             case 4: EditorMenuOption(); break;
-            case 5: ReportGen(); break;
+            case 5: Actions(); break;
             case 6: ShowAll(); break;
         }
         Main();

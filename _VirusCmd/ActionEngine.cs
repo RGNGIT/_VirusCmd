@@ -6,6 +6,7 @@ public class ActionEngine
 {
     string CheckEpidemy(Country country)
     {
+        Console.Clear();
         var a = ConsoleMarkupTools.SpaceGen(3);
         var b = ConsoleMarkupTools.SpaceGen(6);
         StringBuilder stringBuilder = new($"Эпидемологическая картина страны {country.Name}");
@@ -22,14 +23,16 @@ public class ActionEngine
     }
     string ProceedLocality(Locality locality)
     {
+        Console.Clear();
         var a = ConsoleMarkupTools.SpaceGen(3);
         var b = ConsoleMarkupTools.SpaceGen(6);
-        StringBuilder stringBuilder = new($"");
+        bool IsEpidemy = locality.CountInfectedPercentage() >= 40;
+        StringBuilder stringBuilder = new($"{ConsoleMarkupTools.DefineType(locality.GetType().Name)} {locality.Name}");
 
         return stringBuilder.ToString();
     }
     // Берет на вход ссылку на страну
-    void ProceedCountry(ref Country country)
+    public void ProceedCountry(ref Country country)
     {
         // Сначала отчетные данные
         Console.WriteLine(CheckEpidemy(country));

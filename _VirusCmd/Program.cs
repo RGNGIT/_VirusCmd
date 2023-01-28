@@ -259,6 +259,7 @@ public static class Program
     static void Actions()
     {
         Console.Clear();
+        ActionEngine engine = new();
         
     }
 
@@ -272,7 +273,7 @@ public static class Program
             Console.WriteLine($"Страна: {country.Name}\nБюджет: {country.Budget}\nНаселенные пункты:");
             foreach(Locality locality in country.Localities) 
             {
-                Console.WriteLine($"{a}{locality.Name} // {ConsoleMarkupTools.DefineType(locality.GetType().Name)}");
+                Console.WriteLine($"{a}{ConsoleMarkupTools.DefineType(locality.GetType().Name)} {locality.Name}");
                 Console.WriteLine($"{b}Население: {locality.Population}");
                 Console.WriteLine($"{b}Заболевшие: {locality.Infected}");
                 Console.WriteLine($"{b}Вакцинированные: {locality.Vaccinated}");

@@ -9,13 +9,22 @@ public static class ConsoleMarkupTools
         }
         return temp;
     }
-    public static string DefineType(string className)
+    public static string DefineLocalityType(string className)
     {
         switch (className)
         {
             case "Megapolis": return "Мегаполис";
             case "City": return "Город";
             case "Town": return "Поселок";
+            default: return "Нечто";
+        }
+    }
+    public static string DefineDiseaseType(string className)
+    {
+        switch (className) 
+        {
+            case "Virus": return "Вирус";
+            case "Bacteria": return "Бактерия";
             default: return "Нечто";
         }
     }

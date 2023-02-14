@@ -12,12 +12,12 @@ public class ActionEngine
         StringBuilder stringBuilder = new($"Эпидемологическая картина страны {country.Name}");
         foreach (Locality locality in country.Localities)
         {
-            stringBuilder.Append($"{a}{ConsoleMarkupTools.DefineType(locality.GetType().Name)} {locality.Name}");
+            stringBuilder.Append($"{a}{ConsoleMarkupTools.DefineLocalityType(locality.GetType().Name)} {locality.Name}");
             stringBuilder.Append($"{b}Население - {locality.Population}");
             stringBuilder.Append($"{b}Заболевших - {locality.Infected}");
             stringBuilder.Append($"{b}Вакцинированных - {locality.Vaccinated}");
             stringBuilder.Append($"{b}Соотношение заболевшие/население - {locality.CountInfectedPercentage()}");
-            stringBuilder.Append(locality.CountInfectedPercentage() >= 40 ? "Внимание! Эпидемия!" : "ОК");
+            stringBuilder.Append(locality.CountInfectedPercentage() >= 45 ? "Внимание! Эпидемия!" : "ОК");
         }
         return stringBuilder.ToString();
     }
@@ -26,8 +26,8 @@ public class ActionEngine
         Console.Clear();
         var a = ConsoleMarkupTools.SpaceGen(3);
         var b = ConsoleMarkupTools.SpaceGen(6);
-        bool IsEpidemy = locality.CountInfectedPercentage() >= 40;
-        StringBuilder stringBuilder = new($"{ConsoleMarkupTools.DefineType(locality.GetType().Name)} {locality.Name}");
+        bool IsEpidemy = locality.CountInfectedPercentage() >= 45;
+        StringBuilder stringBuilder = new($"{ConsoleMarkupTools.DefineLocalityType(locality.GetType().Name)} {locality.Name}");
 
         return stringBuilder.ToString();
     }

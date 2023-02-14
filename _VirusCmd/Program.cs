@@ -53,6 +53,31 @@ public static class Program
         }
     }
 
+    static void EditDisease(ref Locality locality)
+    {
+        Console.WriteLine("Назначьте заболевание в данном НП:\n1 - Вирус\n2 - Бактериальное заболевание");
+        var selector = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Название:");
+        string? Name = Console.ReadLine();
+        Console.WriteLine("Описание:");
+        string? Description = Console.ReadLine();
+        switch(selector) 
+        {
+            case 1:
+                Console.WriteLine("Штамм:");
+                string? Shtamm = Console.ReadLine();
+                Console.WriteLine("Инкубационный период:");
+                string? IncubationPeriod  = Console.ReadLine();
+                locality.Disease = new Virus(Name!, Description!, Shtamm!, IncubationPeriod!);
+                break;
+            case 2:
+                Console.WriteLine("Зона распространения:");
+                string? Zone = Console.ReadLine();
+                locality.Disease = new Bacteria(Name!, Description!, Zone!);
+                break;
+        }
+    }
+
     static void AddNewLocality(int countryKey)
     {
         Console.Clear();
@@ -122,6 +147,7 @@ public static class Program
         }
         if(locality != null)
         {
+            EditDisease(ref locality);
             Storage[countryKey].Localities.Add(locality);
         }
         else
@@ -268,13 +294,25 @@ public static class Program
         Console.Clear();
         var a = ConsoleMarkupTools.SpaceGen(3); 
         var b = ConsoleMarkupTools.SpaceGen(6);
-        foreach(Country country in Storage) 
+        var c = ConsoleMarkupTools.SpaceGen(9);
+        foreach (Country country in Storage) 
         {
             Console.WriteLine($"Страна: {country.Name}\nБюджет: {country.Budget}\nНаселенные пункты:");
             foreach(Locality locality in country.Localities) 
             {
-                Console.WriteLine($"{a}{ConsoleMarkupTools.DefineType(locality.GetType().Name)} {locality.Name}");
+                Console.WriteLine($"{a}{ConsoleMarkupTools.DefineLocalityType(locality.GetType().Name)} {locality.Name}");
                 Console.WriteLine($"{b}Население: {locality.Population}");
+                Console.WriteLine($"{b}Заболевание: {ConsoleMarkupTools.DefineDiseaseType(locality.Disease!.GetType().Name)}, {locality.Disease.Description}");
+                switch(locality.Disease!.GetType().Name)
+                {
+                    case "Virus":
+                        Console.WriteLine($"{c}Штамм: {((Virus)locality.Disease).Shtamm}");
+                        Console.WriteLine($"{c}Инкубационный период: {((Virus)locality.Disease).IncubationPeriod}");
+                        break;
+                    case "Bacteria":
+                        Console.WriteLine($"{c}Зона поражения: {((Bacteria)locality.Disease).Zone}");
+                        break;
+                }
                 Console.WriteLine($"{b}Заболевшие: {locality.Infected}");
                 Console.WriteLine($"{b}Вакцинированные: {locality.Vaccinated}");
                 Console.WriteLine($"{b}Плотность трафика: {locality.Density}");

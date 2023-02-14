@@ -9,6 +9,7 @@ namespace _VirusCmd.Classes
 		public int Infected { get; set; }
 		public int Vaccinated { get; set; }
 		public float Density { get; set; }
+		public Disease? Disease { get; set; }
 
 		public Locality(string Name, int Population, int Infected, int Vaccinated, float Density)
 		{

@@ -28,7 +28,14 @@ public class ActionEngine
         var b = ConsoleMarkupTools.SpaceGen(6);
         bool IsEpidemy = locality.CountInfectedPercentage() >= 45;
         StringBuilder stringBuilder = new($"{ConsoleMarkupTools.DefineLocalityType(locality.GetType().Name)} {locality.Name}");
-
+        if (!IsEpidemy)
+        {
+            stringBuilder.Append("Эпидемии в данном НП нет. Действий не требуется");
+        }
+        else 
+        {
+            stringBuilder.Append("Замечена эпидемия. Требуется дествие");
+        }
         return stringBuilder.ToString();
     }
     // Берет на вход ссылку на страну

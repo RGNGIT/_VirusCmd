@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Text;
 using _VirusCmd.Classes;
-
+// Класс дейсвтий с странами и НП
 public class ActionEngine
 {
 
     bool isDangerous = false;
     float estimatedValue = 0;
-
+    // Метод проверки эпидемологической ситуации в стране
     string CheckEpidemy(Country country)
     {
         Console.Clear();
@@ -25,6 +25,7 @@ public class ActionEngine
         }
         return stringBuilder.ToString();
     }
+    // Метод обработки НП
     string ProceedLocality(Locality locality)
     {
         Console.Clear();
@@ -44,7 +45,7 @@ public class ActionEngine
         }
         return stringBuilder.ToString();
     }
-
+    // Снижение уровня эпидемии в НПах страны
     void EpidemyReducer(ref Country country)
     {
         foreach(Locality locality in country.Localities)
@@ -56,7 +57,7 @@ public class ActionEngine
         }
     }
 
-    // Берет на вход ссылку на страну
+    // Берет на вход ссылку на страну. Обработчик страны
     public void ProceedCountry(ref Country country)
     {
         // Сначала отчетные данные

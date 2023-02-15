@@ -1,3 +1,4 @@
+// Небольшой класс-хелпер для маркировок
 public static class ConsoleMarkupTools
 {
     public static string SpaceGen(int degree)

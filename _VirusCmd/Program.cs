@@ -1,5 +1,5 @@
 ﻿using _VirusCmd.Classes;
-
+// Перечень айдишников времен года
 enum ESeason
 {
     Winter = 0,
@@ -7,7 +7,7 @@ enum ESeason
     Summer = 2,
     Fall = 3
 }
-
+// Перечень айдишников населенных пунктов
 enum ELocalityType
 {
     Megapolis = 1,
@@ -28,13 +28,13 @@ public static class Program
         {2, "Лето"},
         {3, "Осень"}
     };
-
+    // Установка года и времени года
     static void SetSeasonAndYear(int Year, int SeasonKey)
     {
         seasonSingleton.Year = Year;
         seasonSingleton.Season = SeasonsDictionary[SeasonKey];
     }
-
+    // Метод назначения времени года
     static void SeasonMenuOption()
     {
         Console.Clear();
@@ -52,7 +52,7 @@ public static class Program
             default: { Console.WriteLine("Чет такого сезона не знает мир. Еще разок"); goto RetrySeason; }
         }
     }
-
+    // Добавление заболевания в НП
     static void EditDisease(ref Locality locality)
     {
         Console.WriteLine("Назначьте заболевание в данном НП:\n1 - Вирус\n2 - Бактериальное заболевание");
@@ -77,7 +77,7 @@ public static class Program
                 break;
         }
     }
-
+    // Добавление нового НП
     static void AddNewLocality(int countryKey)
     {
         Console.Clear();
@@ -156,7 +156,7 @@ public static class Program
             Console.ReadKey();
         }
     }
-
+    // Выбор в какую страну добавить НП
     static void LocalityMenuOption()
     {
         Console.Clear();
@@ -182,7 +182,7 @@ public static class Program
             Console.ReadKey();
         }
     }
-
+    // Добавление страны
     static void CountryMenuOption()
     {
         Console.Clear();
@@ -192,7 +192,7 @@ public static class Program
         var Budget = Console.ReadLine();
         Storage.Add(new Country(Name != null ? Name.ToString() : "Не назначено", Convert.ToSingle(Budget)));
     }
-
+    // Удаление страны
     static void DeleteCountry()
     {
         Console.Clear();
@@ -221,7 +221,7 @@ public static class Program
             DeleteCountry();
         }
     }
-
+    // Удаление НП
     static void DeleteLocality()
     {
         Console.Clear();
@@ -269,7 +269,7 @@ public static class Program
             DeleteCountry();
         }
     }
-
+    // Выбор что удалить
     static void EditorMenuOption()
     {
         Console.Clear();
@@ -281,7 +281,7 @@ public static class Program
             case 2: DeleteLocality(); break;
         }
     }
-
+    // Вызов меню действий
     static void Actions()
     {
         Console.Clear();
@@ -297,7 +297,7 @@ public static class Program
         Storage[selector - 1] = country;
         Console.ReadKey();
     }
-
+    // Показать все данные
     static void ShowAll()
     {
         Console.Clear();
@@ -343,7 +343,7 @@ public static class Program
         }
         Console.ReadKey();
     }
-
+    // Сохранение данных
     public static void SaveData() 
     {
         Console.Clear();
@@ -351,7 +351,7 @@ public static class Program
         Console.WriteLine("Данные сохранены");
         Console.ReadKey();
     }
-
+    // Загрузка данных
     public static void LoadData() 
     {
         Console.Clear();
@@ -361,7 +361,7 @@ public static class Program
         Console.WriteLine("Данные загружены");
         Console.ReadKey();
     }
-
+    // Точка входа программы
     public static void Main()
     {
         Console.Clear();

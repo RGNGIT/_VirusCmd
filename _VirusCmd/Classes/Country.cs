@@ -1,6 +1,7 @@
 ﻿using System;
 namespace _VirusCmd.Classes
 {
+	[Serializable]
 	public class Country
 	{
 

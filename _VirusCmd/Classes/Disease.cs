@@ -1,5 +1,6 @@
 namespace _VirusCmd.Classes
 {
+    [Serializable]
     public class Disease
     {
 

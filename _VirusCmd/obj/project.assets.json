@@ -30,26 +30,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vnife\\.nuget\\packages\\": {}
+    "/Users/a1/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vnife\\Source\\Repos\\RGNGIT\\_VirusCmd\\_VirusCmd\\_VirusCmd.csproj",
+      "projectUniqueName": "/Users/a1/Projects/_VirusCmd/_VirusCmd/_VirusCmd.csproj",
       "projectName": "_VirusCmd",
-      "projectPath": "C:\\Users\\vnife\\Source\\Repos\\RGNGIT\\_VirusCmd\\_VirusCmd\\_VirusCmd.csproj",
-      "packagesPath": "C:\\Users\\vnife\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vnife\\Source\\Repos\\RGNGIT\\_VirusCmd\\_VirusCmd\\obj\\",
+      "projectPath": "/Users/a1/Projects/_VirusCmd/_VirusCmd/_VirusCmd.csproj",
+      "packagesPath": "/Users/a1/.nuget/packages/",
+      "outputPath": "/Users/a1/Projects/_VirusCmd/_VirusCmd/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\vnife\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/a1/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -89,7 +87,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.405/RuntimeIdentifierGraph.json"
       }
     }
   }

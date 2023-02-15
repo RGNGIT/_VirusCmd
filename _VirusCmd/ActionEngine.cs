@@ -4,20 +4,24 @@ using _VirusCmd.Classes;
 
 public class ActionEngine
 {
+
+    bool isDangerous = false;
+    float estimatedValue = 0;
+
     string CheckEpidemy(Country country)
     {
         Console.Clear();
         var a = ConsoleMarkupTools.SpaceGen(3);
         var b = ConsoleMarkupTools.SpaceGen(6);
-        StringBuilder stringBuilder = new($"Эпидемологическая картина страны {country.Name}");
+        StringBuilder stringBuilder = new($"Эпидемологическая картина страны {country.Name}\n");
         foreach (Locality locality in country.Localities)
         {
-            stringBuilder.Append($"{a}{ConsoleMarkupTools.DefineLocalityType(locality.GetType().Name)} {locality.Name}");
-            stringBuilder.Append($"{b}Население - {locality.Population}");
-            stringBuilder.Append($"{b}Заболевших - {locality.Infected}");
-            stringBuilder.Append($"{b}Вакцинированных - {locality.Vaccinated}");
-            stringBuilder.Append($"{b}Соотношение заболевшие/население - {locality.CountInfectedPercentage()}");
-            stringBuilder.Append(locality.CountInfectedPercentage() >= 45 ? "Внимание! Эпидемия!" : "ОК");
+            stringBuilder.AppendLine($"{a}{ConsoleMarkupTools.DefineLocalityType(locality.GetType().Name)} {locality.Name}");
+            stringBuilder.AppendLine($"{b}Население - {locality.Population}");
+            stringBuilder.AppendLine($"{b}Заболевших - {locality.Infected}");
+            stringBuilder.AppendLine($"{b}Вакцинированных - {locality.Vaccinated}");
+            stringBuilder.AppendLine($"{b}Соотношение заболевшие/население - {locality.CountInfectedPercentage()}");
+            stringBuilder.AppendLine(ProceedLocality(locality));
         }
         return stringBuilder.ToString();
     }
@@ -27,23 +31,61 @@ public class ActionEngine
         var a = ConsoleMarkupTools.SpaceGen(3);
         var b = ConsoleMarkupTools.SpaceGen(6);
         bool IsEpidemy = locality.CountInfectedPercentage() >= 45;
-        StringBuilder stringBuilder = new($"{ConsoleMarkupTools.DefineLocalityType(locality.GetType().Name)} {locality.Name}");
+        StringBuilder stringBuilder = new($"{ConsoleMarkupTools.DefineLocalityType(locality.GetType().Name)} {locality.Name}\n");
         if (!IsEpidemy)
         {
-            stringBuilder.Append("Эпидемии в данном НП нет. Действий не требуется");
+            stringBuilder.AppendLine("Эпидемии в данном НП нет. Действий не требуется");
         }
         else 
         {
-            stringBuilder.Append("Замечена эпидемия. Требуется действие");
+            isDangerous = true;
+            estimatedValue += (locality.Population - locality.Vaccinated - locality.Infected) * 140;
+            stringBuilder.AppendLine("Замечена эпидемия. Требуется действие");
         }
         return stringBuilder.ToString();
     }
+
+    void EpidemyReducer(ref Country country)
+    {
+        foreach(Locality locality in country.Localities)
+        {
+            if(locality.CountInfectedPercentage() >= 45)
+            {
+                locality.Infected -= (int)(locality.Infected * 0.5);
+            }
+        }
+    }
+
     // Берет на вход ссылку на страну
     public void ProceedCountry(ref Country country)
     {
         // Сначала отчетные данные
         Console.WriteLine(CheckEpidemy(country));
-
+        if(isDangerous)
+        {
+            Console.WriteLine($"Обнаружены эпидемии. Расчетная стоимость для принятия мер: {estimatedValue}");
+            if(country.Budget < estimatedValue)
+            {
+                Console.WriteLine("Бюджета страны будет недостаточно!");
+            }
+            else
+            {
+                Console.WriteLine("Принять меры?\n1 - Да\n2 - Нет");
+                var selector = Convert.ToInt32(Console.ReadLine());
+                switch(selector)
+                {
+                    case 1:
+                        EpidemyReducer(ref country);
+                        country.Budget -= estimatedValue;
+                        break;
+                    case 2: return;
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("Эпидемий не замечено");
+        }
     }
 }
 

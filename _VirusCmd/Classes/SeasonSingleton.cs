@@ -1,6 +1,7 @@
 ﻿using System;
 namespace _VirusCmd.Classes
 {
+	[Serializable]
 	public class SeasonSingleton
 	{
 		public int? Year { get; set; } = null;

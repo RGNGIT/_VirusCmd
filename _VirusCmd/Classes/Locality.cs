@@ -2,6 +2,7 @@
 namespace _VirusCmd.Classes
 {
 	// Общий класс для населенного пункта
+	[Serializable]
 	public class Locality
 	{
 		public string Name { get; set; }

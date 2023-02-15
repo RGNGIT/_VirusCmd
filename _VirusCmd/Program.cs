@@ -285,8 +285,17 @@ public static class Program
     static void Actions()
     {
         Console.Clear();
+        Console.WriteLine("Выберите страну для действия");
+        for(int i = 0; i < Storage.Count; i++)
+        {
+            Console.WriteLine($"{i + 1} - {Storage[i].Name}");
+        }
+        var selector = Convert.ToInt32(Console.ReadLine());
         ActionEngine engine = new();
-        
+        Country country = Storage[selector - 1];
+        engine.ProceedCountry(ref country);
+        Storage[selector - 1] = country;
+        Console.ReadKey();
     }
 
     static void ShowAll()
@@ -335,6 +344,20 @@ public static class Program
         Console.ReadKey();
     }
 
+    public static void SaveData() 
+    {
+        _VirusCmd.DataManager.Save(Storage);
+        Console.WriteLine("Данные сохранены");
+        Console.ReadKey();
+    }
+
+    public static void LoadData() 
+    {
+        Storage = _VirusCmd.DataManager.Read();
+        Console.WriteLine("Данные загружены");
+        Console.ReadKey();
+    }
+
     public static void Main()
     {
         Console.Clear();
@@ -346,7 +369,7 @@ public static class Program
         {
             Console.WriteLine("Год и сезон не назначены");
         }
-        Console.WriteLine("Главное меню\n1 - Назначить сезон и год\n2 - Внести новый НП\n3 - Добавить страну\n4 - Удаление\n5 - Действия\n6 - Вывести все данные");
+        Console.WriteLine("Главное меню\n1 - Назначить сезон и год\n2 - Внести новый НП\n3 - Добавить страну\n4 - Удаление\n5 - Действия\n6 - Вывести все данные\n7 - Сохранить данные\n8 - Загрузить данные");
         var Selector = Console.ReadLine();
         switch(Convert.ToInt32(Selector))
         {
@@ -356,6 +379,8 @@ public static class Program
             case 4: EditorMenuOption(); break;
             case 5: Actions(); break;
             case 6: ShowAll(); break;
+            case 7: SaveData(); break;
+            case 8: LoadData(); break;
         }
         Main();
     }

@@ -12,16 +12,18 @@ namespace _VirusCmd
     static class DataManager
     {
         [Serializable]
-        class SerializableContainer 
+        public class SerializableContainer 
         {
             public List<Country>? countries;
+            public SeasonSingleton? season;
         }
 
-        public static void Save(List<Country> countries, string name = "VirusDB.auf") 
+        public static void Save(List<Country> countries, SeasonSingleton season, string name = "VirusDB.auf") 
         {
             SerializableContainer container = new() 
             {
-                countries = countries
+                countries = countries,
+                season = season
             };
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream(name, FileMode.Create, FileAccess.Write, FileShare.None);
@@ -34,7 +36,7 @@ namespace _VirusCmd
             Stream stream = new FileStream(name, FileMode.Open, FileAccess.Read, FileShare.Read);
             SerializableContainer tempContainer = (SerializableContainer)formatter.Deserialize(stream);
             stream.Close();
-            return tempContainer.countries!;
+            return tempContainer;
         }
     }
 }

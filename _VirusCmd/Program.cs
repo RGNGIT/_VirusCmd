@@ -311,7 +311,7 @@ public static class Program
             {
                 Console.WriteLine($"{a}{ConsoleMarkupTools.DefineLocalityType(locality.GetType().Name)} {locality.Name}");
                 Console.WriteLine($"{b}Население: {locality.Population}");
-                Console.WriteLine($"{b}Заболевание: {ConsoleMarkupTools.DefineDiseaseType(locality.Disease!.GetType().Name)}, {locality.Disease.Description}");
+                Console.WriteLine($"{b}Заболевание: {ConsoleMarkupTools.DefineDiseaseType(locality.Disease!.GetType().Name)}, {locality.Disease.Name}, {locality.Disease.Description}");
                 switch(locality.Disease!.GetType().Name)
                 {
                     case "Virus":
@@ -346,14 +346,18 @@ public static class Program
 
     public static void SaveData() 
     {
-        _VirusCmd.DataManager.Save(Storage);
+        Console.Clear();
+        _VirusCmd.DataManager.Save(Storage, seasonSingleton);
         Console.WriteLine("Данные сохранены");
         Console.ReadKey();
     }
 
     public static void LoadData() 
     {
-        Storage = _VirusCmd.DataManager.Read();
+        Console.Clear();
+        dynamic container = _VirusCmd.DataManager.Read();
+        Storage = ((_VirusCmd.DataManager.SerializableContainer)container).countries!;
+        seasonSingleton = ((_VirusCmd.DataManager.SerializableContainer)container).season!;
         Console.WriteLine("Данные загружены");
         Console.ReadKey();
     }

@@ -30,7 +30,7 @@ namespace _VirusCmd.Classes
 			}
 		}
 
-		public float CountInfectedPercentage() => (Infected / Population) * 100;
+		public float CountInfectedPercentage() => (float)((float)Infected / (float)Population) * 100;
 
 	}
 }

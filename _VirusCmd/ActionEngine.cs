@@ -34,7 +34,7 @@ public class ActionEngine
         }
         else 
         {
-            stringBuilder.Append("Замечена эпидемия. Требуется дествие");
+            stringBuilder.Append("Замечена эпидемия. Требуется действие");
         }
         return stringBuilder.ToString();
     }
